@@ -52,7 +52,7 @@ const AddPlatform = ({ isOpen, onClose, onCreated }) => {
             {errors.name && <p>This is an error</p>}
 
             <label htmlFor="image">Marke</label>
-            <select className="input-type-console" {...register("marke")}>
+            <select className="input-type-console" {...register("maker")}>
               <option value="Nintendo">Nintendo</option>
               <option value="Sega">Sega</option>
               <option value="Sony">Sony</option>

@@ -8,6 +8,7 @@ import type {
   Etat,
   Objectif,
   launch_status,
+  SalePlaces,
 } from "../enum/enum";
 
 export interface IFormGame {
@@ -49,4 +50,13 @@ export interface IFormGame {
   // Liens externes
   userId: number;
   annonceId?: number | null;
+
+  // Vente
+  vente: {
+    prix_achat: number;
+    date_achat: string;
+    nameSalePlace: string;
+    salePlace: SalePlaces;
+    prix_estime: number;
+  };
 }

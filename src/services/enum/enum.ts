@@ -50,3 +50,11 @@ export type Objectif =
 export type launch_status = "WORKING" | "PARTIAL" | "NOT_WORKING";
 
 export type Marke = "Nintendo" | "Sega" | "Sony" | "Microsoft";
+
+export type SalePlaces =
+  | "non_defini"
+  | "Magasin"
+  | "Vide_Greniers"
+  | "Enchere"
+  | "Don"
+  | "Recyclerie";
