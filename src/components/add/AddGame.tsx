@@ -127,6 +127,7 @@ const AddGame = ({
     console.log(formDate);
 
     await createGame(formDate);
+    window.location.reload();
   };
 
   const goNext = async () => {
