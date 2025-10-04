@@ -5,7 +5,15 @@ import { useCallback } from "react";
 
 import React from "react";
 
-const AddPlatform = ({ isOpen, onClose, onCreated }) => {
+const AddPlatform = ({
+  isOpen,
+  onClose,
+  onCreated,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  onCreated: (data: IPlatforme) => void;
+}) => {
   if (!isOpen) return null;
 
   const {

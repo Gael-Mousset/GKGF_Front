@@ -3,7 +3,15 @@ import type { ISeries } from "../../services/interface/ISeries";
 import { createSeries } from "../../services/api/series";
 import { useCallback } from "react";
 
-const AddSeries = ({ isOpen, onClose, onCreated }) => {
+const AddSeries = ({
+  isOpen,
+  onClose,
+  onCreated,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  onCreated: (data: ISeries) => void;
+}) => {
   if (!isOpen) return null;
 
   const {

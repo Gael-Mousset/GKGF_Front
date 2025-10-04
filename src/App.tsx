@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Navbar from "./components/navbar/Navbar";
 import ListeGames from "./pages/Game/listeGames";
+import Game from "./pages/Game/Game";
 
 function App() {
   const queryClient = new QueryClient();
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/games" element={<ListeGames />} />
+        <Route path="/game/:id" element={<Game />} />
         <Route path="/about" element={<div>About</div>} />
       </Routes>
     </QueryClientProvider>

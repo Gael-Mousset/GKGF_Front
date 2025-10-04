@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getGames } from "../../services/api/game";
+import { useNavigate } from "react-router-dom";
 
 type Game = {
   id: number;
@@ -21,6 +22,7 @@ const ListeTable = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<unknown>(null);
+  const navigator = useNavigate();
 
   useEffect(() => {
     const loadGames = async () => {
@@ -69,6 +71,7 @@ const ListeTable = () => {
             <tr
               key={game.id}
               className="hover:bg-gray-50 dark:hover:bg-neutral-800"
+              onClick={() => navigator(`/game/${game.id}`)}
             >
               <td className="px4 py-2 text-left">{game.title ?? "N/A"}</td>
               <td className="px4 py-2 text-left">

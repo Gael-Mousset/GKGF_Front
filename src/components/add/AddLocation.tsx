@@ -3,7 +3,15 @@ import type { ILocation } from "../../services/interface/ILocation";
 import { createLocation } from "../../services/api/location";
 import { useCallback } from "react";
 
-const AddLocation = ({ isOpen, onClose, onCreated }) => {
+const AddLocation = ({
+  isOpen,
+  onClose,
+  onCreated,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  onCreated: (data: ILocation) => void;
+}) => {
   if (!isOpen) return null;
 
   const {
