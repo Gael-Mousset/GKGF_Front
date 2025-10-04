@@ -4,13 +4,13 @@ import { getPlateform } from "../../services/api/platform";
 import { getLocation } from "../../services/api/location";
 import { getEdition } from "../../services/api/edition";
 import { type IFormGame } from "../../services/interface/IFormGame";
-import { set, useForm, type SubmitHandler } from "react-hook-form";
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { createGame } from "../../services/api/game";
 import type { ISeries } from "../../services/interface/ISeries";
 import type { IPlatforme } from "../../services/interface/IPlatform";
 import type { ILocation } from "../../services/interface/ILocation";
 import type { IEdition } from "../../services/interface/IEdition";
-import AddSeries from "./addSeries";
+import AddSeries from "./AddSeries";
 import AddPlatform from "./AddPlatform";
 import AddLocation from "./AddLocation";
 
@@ -232,7 +232,7 @@ const AddGame = ({
                           );
                           return exists
                             ? prev.map((series) =>
-                                series === created.id ? created : series
+                                series.id === created.id ? created : series
                               )
                             : [...prev, created];
                         });
@@ -279,7 +279,9 @@ const AddGame = ({
                           );
                           return exists
                             ? prev.map((plateform) =>
-                                plateform === created.id ? created : plateform
+                                plateform.id === created.id
+                                  ? created
+                                  : plateform
                               )
                             : [...prev, created];
                         });
@@ -407,8 +409,8 @@ const AddGame = ({
                       {...register("excusivity")}
                     />
                     <label
-                      for="hs-default-checkbox"
-                      class="text-sm text-gray-500 ms-3 dark:text-neutral-400"
+                      htmlFor="hs-default-checkbox"
+                      className="text-sm text-gray-500 ms-3 dark:text-neutral-400"
                     >
                       Excusiviter
                     </label>
@@ -426,7 +428,6 @@ const AddGame = ({
                     <div className="flex items-center gap-2">
                       <input
                         type="checkbox"
-                        name="has-game"
                         className="h-4 w-4"
                         id="hs-default-checkbox"
                         {...register("jeux")}
@@ -463,7 +464,6 @@ const AddGame = ({
                     <div className="flex items-center gap-2">
                       <input
                         type="checkbox"
-                        name="has_box"
                         className="h-4 w-4"
                         {...register("boite")}
                       />
@@ -471,7 +471,6 @@ const AddGame = ({
                     </div>
 
                     <select
-                      name="box_condition"
                       className="rounded-lg border-2 border-black p-2"
                       {...register("etatbox")}
                     >
@@ -491,7 +490,6 @@ const AddGame = ({
                     <div className="flex items-center gap-2">
                       <input
                         type="checkbox"
-                        name="has_manual"
                         className="h-4 w-4"
                         {...register("manuel")}
                       />
@@ -499,7 +497,6 @@ const AddGame = ({
                     </div>
 
                     <select
-                      name="manual_condition"
                       className="rounded-lg border-2 border-black p-2"
                       {...register("etatManuel")}
                     >
@@ -561,7 +558,9 @@ const AddGame = ({
                           );
                           return exists
                             ? prev.map((plateform) =>
-                                plateform === created.id ? created : plateform
+                                plateform.id === created.id
+                                  ? created
+                                  : plateform
                               )
                             : [...prev, created];
                         });

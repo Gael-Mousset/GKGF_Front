@@ -1,4 +1,4 @@
-import { useForm, type SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import type { ILocation } from "../../services/interface/ILocation";
 import { createLocation } from "../../services/api/location";
 import { useCallback } from "react";

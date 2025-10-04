@@ -3,8 +3,6 @@ import type { IPlatforme } from "../../services/interface/IPlatform";
 import { createPlateform } from "../../services/api/platform";
 import { useCallback } from "react";
 
-import React from "react";
-
 const AddPlatform = ({
   isOpen,
   onClose,

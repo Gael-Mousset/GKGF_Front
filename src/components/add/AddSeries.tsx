@@ -1,4 +1,4 @@
-import { useForm, type SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import type { ISeries } from "../../services/interface/ISeries";
 import { createSeries } from "../../services/api/series";
 import { useCallback } from "react";

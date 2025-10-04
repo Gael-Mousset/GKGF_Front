@@ -1,5 +1,4 @@
-import React from "react";
-import ArticlList from "../../components/list/articlList";
+import ArticlList from "../../components/list/ArticlList";
 
 const ListeGames = () => {
   return (

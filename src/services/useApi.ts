@@ -2,7 +2,7 @@ import axios, { type AxiosInstance } from "axios";
 
 export function useApi() {
   const api: AxiosInstance = axios.create({
-    baseURL: "http://localhost:3000",
+    baseURL: import.meta.env.VITE_API_LOCAL_URL,
     withCredentials: true,
   });
 
