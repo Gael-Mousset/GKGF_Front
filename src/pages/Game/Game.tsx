@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getGame } from "../../services/api/game";
 import { useParams } from "react-router-dom";
+import jsPDF from "jspdf";
 
 const Game = () => {
   const [game, setGame] = useState<any>({});
@@ -39,6 +40,28 @@ const Game = () => {
       </html>
     `);
     printWindow.document.close();
+  };
+
+  const handleDownloadPdf = async () => {
+    const doc = new jsPDF();
+
+    // Charger l'image du QR code
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.src = qrUrl;
+
+    img.onload = () => {
+      // Ajouter un titre
+      doc.setFontSize(16);
+      doc.text(`QR Code du jeu ${game.id}`, 20, 20);
+
+      // Ajouter l'image (x, y, largeur, hauteur)
+      doc.addImage(img, "PNG", 20, 30, 100, 100);
+
+      // Télécharger le fichier PDF
+      const pdfUrl = doc.output("bloburl");
+      window.open(pdfUrl, "_blank");
+    };
   };
 
   if (!game) return <div>Loading...</div>;
@@ -138,6 +161,12 @@ const Game = () => {
               className="px-4 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700"
             >
               Imprimer le QR Code
+            </button>
+            <button
+              onClick={handleDownloadPdf}
+              className="px-4 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700"
+            >
+              Télécharger QR Code en PDF
             </button>
           </div>
         </div>
