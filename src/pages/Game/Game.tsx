@@ -19,7 +19,7 @@ const Game = () => {
 
   console.log(game);
 
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://localhost:5173/game/${game.id}`;
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://http://57.129.5.43:8085/game/${game.id}`;
 
   const handlePrint = () => {
     const printWindow = window.open("", "_blank");
@@ -43,7 +43,11 @@ const Game = () => {
   };
 
   const handleDownloadPdf = async () => {
-    const doc = new jsPDF();
+    const doc = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: [150, 150],
+    });
 
     // Charger l'image du QR code
     const img = new Image();
@@ -53,7 +57,11 @@ const Game = () => {
     img.onload = () => {
       // Ajouter un titre
       doc.setFontSize(16);
-      doc.text(`QR Code du jeu ${game.id}`, 20, 20);
+      doc.text(
+        `QR Code du jeu ${game.title} Prix estimé ${game.vente.prix_estime}€`,
+        20,
+        20
+      );
 
       // Ajouter l'image (x, y, largeur, hauteur)
       doc.addImage(img, "PNG", 20, 30, 100, 100);
