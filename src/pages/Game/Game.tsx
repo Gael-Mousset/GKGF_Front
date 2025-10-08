@@ -49,22 +49,31 @@ const Game = () => {
       format: [150, 150],
     });
 
+    // fonction utilitaire pour centrer horizontalement
+    const centerText = (text: string, y: number, size: number) => {
+      doc.setFontSize(size);
+      const pageWidth = 150; // largeur totale
+      const textWidth = doc.getTextWidth(text);
+      const x = (pageWidth - textWidth) / 2; // calcul du centrage
+      doc.text(text, x, y);
+    };
+
     // Charger l'image du QR code
     const img = new Image();
     img.crossOrigin = "anonymous";
     img.src = qrUrl;
 
     img.onload = () => {
-      // Ajouter un titre
-      doc.setFontSize(16);
-      doc.text(
-        `QR Code du jeu ${game.title} Prix estimé ${game.vente.prix_estime}€`,
-        20,
-        20
-      );
+      // Ajouter les textes centrés
+      centerText("QR Code du jeu", 20, 16);
+      centerText(game.title, 30, 16);
+      centerText(`Prix estimé ${game.vente.prix_estime}€`, 40, 16);
 
-      // Ajouter l'image (x, y, largeur, hauteur)
-      doc.addImage(img, "PNG", 20, 30, 100, 100);
+      // Ajouter l'image centrée aussi (100x100)
+      const imgWidth = 100;
+      const imgHeight = 100;
+      const x = (150 - imgWidth) / 2;
+      doc.addImage(img, "PNG", x, 45, imgWidth, imgHeight);
 
       // Télécharger le fichier PDF
       const pdfUrl = doc.output("bloburl");
