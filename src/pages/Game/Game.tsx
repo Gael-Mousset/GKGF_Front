@@ -19,7 +19,9 @@ const Game = () => {
 
   console.log(game);
 
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://57.129.5.43:8085/game/${game.id}`;
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${
+    import.meta.env.VITE_WEB_ADRESSE
+  }/game/${game.id}`;
 
   const handlePrint = () => {
     const printWindow = window.open("", "_blank");
