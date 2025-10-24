@@ -10,6 +10,9 @@ COPY . .
 ARG VITE_API_LOCAL_URL
 ENV VITE_API_LOCAL_URL=$VITE_API_LOCAL_URL
 
+ARG VITE_WEB_ADRESSE
+ENV VITE_WEB_ADRESSE=$VITE_WEB_ADRESSE
+
 RUN npm run build
 
 #utilisation de  Nginx pour servir les fichers statiques/
