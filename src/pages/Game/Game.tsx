@@ -89,13 +89,13 @@ const Game = () => {
     <div className="max-w-5xl mx-auto p-6">
       <div className="flex gap-6 rounded-2xl p-6">
         {/* Image */}
-        <div className="w-2/3 flex justify-center items-start">
+        {/* <div className="w-2/3 flex justify-center items-start">
           <img
-            src="https://storage.googleapis.com/images.pricecharting.com/AMIfv97yNOhlgL2dDT7rlDOZU4gvz1BjUFG1_zHs2d-3nzRq0Wa_PLHc04TwalaPI1Tg14Gp74_RcW0L6KshHnaaEJjGwEn4z5odiW5icpxcGyyz2RXU-E1XIPsOTZh8stFFEMaMneS9mUdv1n-UqlEniJ_SbV3sdw/240.jpg"
+            src={`localhost:3000/api/picture/${game.resource[0].url}`}
             alt={game.title}
             className="rounded-xl shadow-md w-full"
           />
-        </div>
+        </div> */}
 
         {/* Infos */}
         <div className="w-2/3 space-y-4">
